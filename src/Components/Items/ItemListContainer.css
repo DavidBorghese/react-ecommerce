@@ -1,0 +1,8 @@
+.greeting {
+    justify-content: center;
+    display: flex;
+    height: 40px;
+    font-weight: bolder;
+    background-color: darkblue;
+    color: white;
+}
