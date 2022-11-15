@@ -1,9 +1,9 @@
 import React from 'react'
-import ItemCount from '../ItemCount/ItemCount'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import ItemCount from '../ItemCount/ItemCount'
 
 
 function ItemDetail({ product }) {
@@ -15,15 +15,13 @@ function ItemDetail({ product }) {
         <Card.Img variant="top" src={product.imgurl} alt={product.title} />
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{product.price}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">$ {product.price}</Card.Subtitle>
           <Card.Text>
           {product.description}
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-        <ItemCount  
-          stock={product.stock} 
-        />
+          <ItemCount stock={product.stock}/>
         </Card.Footer>
       </Card>
         </Col>
@@ -32,4 +30,4 @@ function ItemDetail({ product }) {
   )
 }
 
-export default ItemDetail
+export default ItemDetail;

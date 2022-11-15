@@ -14,12 +14,14 @@ function ItemCount({ stock }) {
         }
 
   return (
-    <ButtonGroup aria-label="ItemCount">
-      <Button variant="success" onPressButton={handleSubstract}>-</Button>
-      <span>{count}</span>
-      <Button variant="danger" onPressButton={handleAdd}>+</Button>
-    </ButtonGroup>>
-    <Button variant='primary'>Agregar al Carrito</Button>
+    <>
+      <ButtonGroup aria-label="ItemCount" className="d-inline-flex">
+        <Button variant="success" onClick={handleSubstract}>-</Button>
+        <div className="mx-1 p-1">{count}</div>
+        <Button variant="danger" onClick={handleAdd}>+</Button>
+        <Button variant='primary' className="mx-1">Agregar al Carrito</Button>
+      </ButtonGroup>
+    </>    
   )
 
 }

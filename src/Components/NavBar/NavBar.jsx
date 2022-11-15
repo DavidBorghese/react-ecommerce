@@ -3,14 +3,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartWidget from './CartWidget'
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 function NavBar() {
   return (
     <Navbar bg="primary" variant="dark">
     <Container>
-      <Navbar.Brand href="#home">
-      <img
+      <LinkContainer to="/">
+      <Navbar.Brand >
+        <img
               src="https://i.imgur.com/Pr0HwYNb.png"
               width="80"
               height="80"
@@ -18,10 +20,17 @@ function NavBar() {
               alt="AlgoRicoLogo"
             />
       </Navbar.Brand>
+      </LinkContainer>
       <Nav className="me-auto">
-        <Nav.Link href="#">Sucré</Nav.Link>
-        <Nav.Link href="#">Salé</Nav.Link>
-        <Nav.Link href="#">Contacto</Nav.Link>
+        <LinkContainer to="/category/sucré"> 
+          <Nav.Link >Sucré</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/category/salé"> 
+          <Nav.Link >Salé</Nav.Link>
+        </LinkContainer>
+          <LinkContainer to="/category/Contacto"> 
+        <Nav.Link >Contacto</Nav.Link>         
+          </LinkContainer>
       </Nav>
       <Nav className="justify-content-end">
         <CartWidget amount='1'/>
@@ -31,4 +40,4 @@ function NavBar() {
   )
 }
 
-export default NavBar
+export default NavBar;
