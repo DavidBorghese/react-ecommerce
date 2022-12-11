@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-function ItemCount({ stock }) {
+function ItemCount({ stock, onAddToCart }) {
         const [count, setCount] = useState(1);
       
         function handleAdd() {
@@ -19,7 +19,7 @@ function ItemCount({ stock }) {
         <Button variant="success" onClick={handleSubstract}>-</Button>
         <div className="mx-1 p-1">{count}</div>
         <Button variant="danger" onClick={handleAdd}>+</Button>
-        <Button variant='primary' className="mx-1">Agregar al Carrito</Button>
+        <Button variant='primary' className="mx-1"  onClick={() => onAddToCart(count)}>Agregar al Carrito</Button>
       </ButtonGroup>
     </>    
   )

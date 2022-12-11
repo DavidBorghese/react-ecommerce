@@ -1,20 +1,28 @@
 import React from 'react'
 import './ItemListContainer.css'
-import Item from './Item'
 import { useState, useEffect } from "react";
 import getItems from "../../services/mockService";
+import getItems, { getItemsByCategory } from "../../Services/firestore";
 import { useParams } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import ItemList from './ItemList';
+import Loader from '../Loaders/Loader';
+
 
 
 function ItemListContainer() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([null]);
   const { idCategory } = useParams();
 
   async function getItemsAsync() {
-    let respuesta = await getItems(idCategory);
-    setProducts(respuesta);
+    if (!idCategory) {
+      let respuesta = await getItems();
+      setProducts(respuesta);
+    } else {
+      let respuesta = await getItemsByCategory(idCategory);
+      setProducts(respuesta);
+    }
   }
 
   useEffect(() => {
@@ -26,18 +34,7 @@ function ItemListContainer() {
     return (
     <Container fluid>
       <Row>
-      {products.map((product) => {
-        return (
-          <Item
-            key={product.id}
-            id={product.id}
-            imgurl={product.imgurl}
-            title={product.title}
-            price={product.price}
-            category={product.category}            
-          />
-        );
-      })}
+        {products ? <ItemList products={products}/> : <Loader/>}
       </Row>
     </Container>
   )

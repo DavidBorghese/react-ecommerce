@@ -3,10 +3,23 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import ItemCount from '../ItemCount/ItemCount'
+import ItemCount from '../ItemCount/ItemCount';
+import { Button } from 'react-bootstrap';
+import { useContext, useState } from "react";
+import { cartContext } from "../../context/cartContext";
+import { Link } from "react-router-dom";
 
 
 function ItemDetail({ product }) {
+  const [isInCart, setIsInCart] = useState(false);
+  const { addToCart } = useContext(cartContext);
+
+  function onAddToCart(count) {
+    setIsInCart(count);
+    addToCart(product, count);
+  }
+
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -21,7 +34,12 @@ function ItemDetail({ product }) {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <ItemCount stock={product.stock}/>
+        {isInCart ? (
+          <Link to="/cart">
+            <Button className="ms-3" color="primary" block size="lg">Ir al Carrito</Button>
+          </Link>) 
+          : (<ItemCount onAddToCart={onAddToCart} stock={product.stock} />)
+          }        
         </Card.Footer>
       </Card>
         </Col>

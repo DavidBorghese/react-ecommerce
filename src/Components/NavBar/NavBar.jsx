@@ -33,7 +33,7 @@ function NavBar() {
           </LinkContainer>
       </Nav>
       <Nav className="justify-content-end">
-        <CartWidget amount='1'/>
+        <CartWidget />
       </Nav>
     </Container>
   </Navbar>
