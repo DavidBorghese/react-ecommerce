@@ -5,7 +5,7 @@ function ThankYou() {
   const idOrder = useParams().idOrder;
 
   return (
-    <div style={{ color: "white" }}>
+    <div style={{ color: "black" }}>
       <h1>Gracias por confiar en nosotros!</h1>
       <h3>
         Con este ID podés seguir tu compra: <strong>{idOrder}</strong>

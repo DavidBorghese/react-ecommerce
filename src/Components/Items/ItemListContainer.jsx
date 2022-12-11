@@ -1,8 +1,8 @@
 import React from 'react'
 import './ItemListContainer.css'
 import { useState, useEffect } from "react";
-import getItems from "../../services/mockService";
-import getItems, { getItemsByCategory } from "../../Services/firestore";
+
+import getItems, { getItemsByCategory } from "../../services/firestore";
 import { useParams } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';

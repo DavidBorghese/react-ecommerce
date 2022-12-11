@@ -8,6 +8,7 @@ import { cartContext } from "../../context/cartContext";
 import { useNavigate } from "react-router-dom";
 import {LinkContainer} from 'react-router-bootstrap'
 import CartForm from './CartForm';
+import { createOrder } from "../../services/firestore";
 
 function CartView() {
   const { cart, removeItem, clear, priceInCart } = useContext(cartContext);
@@ -20,38 +21,38 @@ function CartView() {
           <Col md="10">
 
             <Card>
-              <CardBody>
+              <Card.Body>
                 <LinkContainer to="/">
                   <Button className="ms-3" color="primary" block size="lg" >
                     Carrito Vacio, vuelva a comprar
                   </Button>
                 </LinkContainer>
-              </CardBody>
+              </Card.Body>
             </Card>
 
             <Card>
-              <CardBody>
+              <Card.Body>
                 <h1>Total Compra : {priceInCart()}</h1>
                 <Button className="ms-3" color="danger" block size="lg" onClick={ () => clear()}>
                   Vaciar Compra
                 </Button>
-              </CardBody>
+              </Card.Body>
             </Card>
           </Col>        
         </Row>
     </Container>
     );
     
-    async function handleCheckout(evt, data) {
+    async function handleCheckout( data) {
       const order = {
         buyer: data,
         items: cart,
-        total: 0,
+        total: priceInCart(),
         date: new Date(),
       };
   
       const orderId = await createOrder(order);
-      navigate(`/thankyou/${orderId}`);
+      navegar(`/thankyou/${orderId}`);
     }
 
   return (

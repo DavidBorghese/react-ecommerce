@@ -305,4 +305,8 @@ export async function exportArrayToFirestore() {
 
     const collectionRef = collection(DB, "products");
 
+    for (let item of products) {
+      let docOrder = await addDoc(collectionRef, item);
+
+    }
 }

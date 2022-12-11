@@ -1,6 +1,6 @@
 import React from 'react'
-import { Grid } from  'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { Grid } from  'react-loader-spinner';
+//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function Loader() {
   return (
@@ -17,4 +17,4 @@ function Loader() {
   )
 }
 
-export default Loader
+export default Loader;
