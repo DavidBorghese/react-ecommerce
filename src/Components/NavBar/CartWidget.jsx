@@ -11,9 +11,9 @@ function CartWidget() {
   return (
   <> 
     <Link to="/cart">
-      <FontAwesomeIcon icon= { faCartShopping }  />
+      <FontAwesomeIcon icon= { faCartShopping } className="carrito" />
     </Link>
-    <span style={{ color: "white" }}>{miContext.itemsInCart()}</span>
+    <span style={{ color: "white" }}>{miContext.itemsInCart() || ''}</span>
   </>
 
   )

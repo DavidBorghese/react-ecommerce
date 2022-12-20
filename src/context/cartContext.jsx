@@ -26,8 +26,7 @@ export function CartContextProvider({ children }) {
       product.count = count;
       newCart.push(product);
 
-      //2) usando spread
-      /* newCart.push( ...product,count) */
+
 
       setCart(newCart);
     }
@@ -43,19 +42,18 @@ export function CartContextProvider({ children }) {
     setCart([])
   }
 
-  function removeItem(idRemove) {
-    console.log("Eliminando el item:", idRemove);
+  function removeItem() {
     const newCart = [...cart];
     newCart.pop();
     setCart(newCart);
-    /* cart.filter -> Filtrar todos los items con un ID diferente a "idRemove"   */
+
   }
 
   function priceInCart() {
     let totalPrice = 0;
     cart.forEach(
       (producto) =>
-        (totalPrice = totalPrice + producto.price * producto.cantidad)
+        (totalPrice = totalPrice + producto.price * producto.count)
     );
     return totalPrice;
   }

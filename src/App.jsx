@@ -27,7 +27,7 @@ function App() {
       </CartContextProvider>
     </div>
   
-  )
+  );
 }
 
 export default App;

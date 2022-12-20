@@ -36,7 +36,7 @@ function ItemDetail({ product }) {
         <Card.Footer>
         {isInCart ? (
           <Link to="/cart">
-            <Button className="ms-3" color="primary" block size="lg">Ir al Carrito</Button>
+            <Button className="ms-3" color="primary"  size="lg">Ir al Carrito</Button>
           </Link>) 
           : (<ItemCount onAddToCart={onAddToCart} stock={product.stock} />)
           }        

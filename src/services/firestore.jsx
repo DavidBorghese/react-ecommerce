@@ -9,18 +9,18 @@ import {
   where,
   addDoc,
   orderBy,
-  limit,
+  limit,  
 } from "firebase/firestore";
 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCcV8_817v5POTBrjuI-V_nx-WXg-O2EgM",
-  authDomain: "react-algorico.firebaseapp.com",
-  projectId: "react-algorico",
-  storageBucket: "react-algorico.appspot.com",
-  messagingSenderId: "681756652141",
-  appId: "1:681756652141:web:bbefc163f781b611c20564"
+  apiKey: "AIzaSyBaDs_C1U_z-Ok02ju2nO2_QsaELqcc0Yo",
+  authDomain: "react-algorico-7aaaf.firebaseapp.com",
+  projectId: "react-algorico-7aaaf",
+  storageBucket: "react-algorico-7aaaf.appspot.com",
+  messagingSenderId: "1062084618314",
+  appId: "1:1062084618314:web:823e003c2ec2f16b46deb3"
 };
 
 // Initialize Firebase
@@ -46,21 +46,21 @@ export default async function getItems() {
   return documentsData;
 }
 
-export async function getItemsOrdered() {
-  const colectionProductsRef = collection(DB, "products");
-  const q = query(colectionProductsRef, orderBy("index"), limit(10));
+// export async function getItemsOrdered() {
+//   const colectionProductsRef = collection(DB, "products");
+//   const q = query(colectionProductsRef, orderBy("index"), limit(10));
 
-  const documentSnapshot = await getDocs(q);
+//   const documentSnapshot = await getDocs(q);
 
-  const documentsData = documentSnapshot.docs.map((doc) => {
-    return {
-      ...doc.data(),
-      id: doc.id,
-    };
-  });
+//   const documentsData = documentSnapshot.docs.map((doc) => {
+//     return {
+//       ...doc.data(),
+//       id: doc.id,
+//     };
+//   });
 
-  return documentsData;
-}
+//   return documentsData;
+// }
 
 
 export async function getSingleItem(idParams) {
@@ -68,10 +68,12 @@ export async function getSingleItem(idParams) {
 
   const docSnapshot = await getDoc(docRef);
 
-  const itemData = docSnapshot.data();
-  itemData.id = docSnapshot.id;
+  return {
+  ...docSnapshot.data(),
+  id: docSnapshot.id
+}
 
-  return itemData;
+
 }
 
 
@@ -94,7 +96,7 @@ export async function getItemsByCategory(categoryParams) {
   return documentsData;
 }
 
-//4. Enviar la orden a Firebase
+ //4. Enviar la orden a Firebase
 export async function createOrder(order) {
   const collectionRef = collection(DB, "orders");
 

@@ -24,7 +24,7 @@ export default function CartForm(props) {
     }
 
     return (
-      <form classname="mb-5" onSubmit={onSubmit}>
+      <form className="mb-5" onSubmit={onSubmit}>
         <div className="form-outline mb-5">
           <input required type="text" name="name" className="form-control form-control-lg" siez="17"
             value={data.name} onChange={onInputChange} />

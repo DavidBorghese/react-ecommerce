@@ -23,7 +23,7 @@ function CartView() {
             <Card>
               <Card.Body>
                 <LinkContainer to="/">
-                  <Button className="ms-3" color="primary" block size="lg" >
+                  <Button className="ms-3" color="primary" size="lg" >
                     Carrito Vacio, vuelva a comprar
                   </Button>
                 </LinkContainer>
@@ -33,7 +33,7 @@ function CartView() {
             <Card>
               <Card.Body>
                 <h1>Total Compra : {priceInCart()}</h1>
-                <Button className="ms-3" color="danger" block size="lg" onClick={ () => clear()}>
+                <Button className="ms-3" color="danger" size="lg" onClick={ () => clear()}>
                   Vaciar Compra
                 </Button>
               </Card.Body>
@@ -43,7 +43,7 @@ function CartView() {
     </Container>
     );
     
-    async function handleCheckout( data) {
+    async function handleCheckout(evt, data) {
       const order = {
         buyer: data,
         items: cart,
@@ -65,7 +65,7 @@ function CartView() {
           <Card.Body className="p-4">
             <Row className="justify-content-between align-items-center">
               <Col md="2" lg="2" xl="2">
-                <Card.Img className="rounded-3" fluid
+                <Card.Img className="rounded-3" 
                   src={item.imgurl}
                   alt={item.title} />
               </Col>
@@ -91,7 +91,7 @@ function CartView() {
         <Card>
           <Card.Body>
             <h1>Total Compra : {priceInCart()}</h1>
-            <Button className="ms-3" color="danger" block size="lg" onClick={ () => clear()}>
+            <Button className="ms-3" color="danger" size="lg" onClick={ () => clear()}>
               Vaciar Compra
             </Button>
             <Card.Footer>
