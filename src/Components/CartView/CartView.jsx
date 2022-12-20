@@ -13,7 +13,7 @@ import { createOrder } from "../../services/firestore";
 function CartView() {
   const { cart, removeItem, clear, priceInCart } = useContext(cartContext);
   let navegar= useNavigate();
-  
+
   if (cart.length === 0) 
     return  (
       <Container className="py-5 h-100">
@@ -81,7 +81,7 @@ function CartView() {
                 </h5>
               </Col>
               <Col md="1" lg="1" xl="1" className="text-end">
-              <i className="fas fa-trash fa-lg" onClick={() => removeItem(item.id)}></i>
+              <Button variant='danger' size='md' onClick={() => removeItem(item.id)}>Borrar</Button>
               </Col>
             </Row>
           </Card.Body>
@@ -91,7 +91,7 @@ function CartView() {
         <Card>
           <Card.Body>
             <h1>Total Compra : {priceInCart()}</h1>
-            <Button className="ms-3" color="danger" size="lg" onClick={ () => clear()}>
+            <Button className="ms-3" variant="danger" size="lg" onClick={ () => clear()}>
               Vaciar Compra
             </Button>
             <Card.Footer>

@@ -20,9 +20,7 @@ export function CartContextProvider({ children }) {
       newCart[itemAlreadyInCart].count += count;
       setCart(newCart);
     } else {
-      /* let newCart = cart.map( item => item); */
 
-      //1) agregando una propiedad
       product.count = count;
       newCart.push(product);
 
@@ -59,18 +57,9 @@ export function CartContextProvider({ children }) {
   }
 
 
-  function alreadyInCart(id){
-    return cart.find(product => product.id === id)? true : false
-  }
 
-  /*  const value = {
-    saludoContext,
-    itemsInCart,
-    cart,
-  }; */
 
-  //3. retornamos el Provider del context creado
-  //4. Pasamos en la prop "value" las variables que queramos hacer visibles
+
   return (
     <cartContext.Provider
       value={{ cart, addToCart, itemsInCart, removeItem ,priceInCart, clear}}

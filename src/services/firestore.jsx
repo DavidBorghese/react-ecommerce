@@ -7,9 +7,7 @@ import {
   getDoc,
   query,
   where,
-  addDoc,
-  orderBy,
-  limit,  
+  addDoc, 
 } from "firebase/firestore";
 
 
@@ -46,21 +44,6 @@ export default async function getItems() {
   return documentsData;
 }
 
-// export async function getItemsOrdered() {
-//   const colectionProductsRef = collection(DB, "products");
-//   const q = query(colectionProductsRef, orderBy("index"), limit(10));
-
-//   const documentSnapshot = await getDocs(q);
-
-//   const documentsData = documentSnapshot.docs.map((doc) => {
-//     return {
-//       ...doc.data(),
-//       id: doc.id,
-//     };
-//   });
-
-//   return documentsData;
-// }
 
 
 export async function getSingleItem(idParams) {
@@ -68,13 +51,14 @@ export async function getSingleItem(idParams) {
 
   const docSnapshot = await getDoc(docRef);
 
-  return {
-  ...docSnapshot.data(),
-  id: docSnapshot.id
+  const itemData = docSnapshot.data();
+  itemData.id = docSnapshot.id;
+
+  return itemData;
 }
 
 
-}
+
 
 
 export async function getItemsByCategory(categoryParams) {
@@ -104,7 +88,7 @@ export async function createOrder(order) {
 
   return docOrder.id;
 }
-
+// funcion de unico uso para exportar el array de data.js
 export async function exportArrayToFirestore() {
   const products = [
     {  
@@ -239,14 +223,6 @@ export async function exportArrayToFirestore() {
       imgurl:"https://raw.githubusercontent.com/filippella/Dagger-Rx-Database-MVP/master/cakes/strawberry_cake.jpg"
     },
     {
-      title: "Wedges",
-      description: "Baked potatoes, slightly spicy",
-      price: 1400,
-      stock: 48,
-      category: "salé",
-      imgurl: "https://i.imgur.com/sxP6sJt.png"
-    },
-    {
       title: "Onion rings",
       description: "Fried onion rings",
       price: 2688,
@@ -309,6 +285,6 @@ export async function exportArrayToFirestore() {
 
     for (let item of products) {
       let docOrder = await addDoc(collectionRef, item);
-
+      console.log("Documento creado, id:", docOrder.id);
     }
 }
