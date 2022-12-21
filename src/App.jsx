@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from './Components/NavBar/NavBar'
+import './services/firestore'
+import NavBar from './Components/NavBar/NavBar';
 import ItemListContainer from './Components/Items/ItemListContainer';
 import ItemDetailContainer from  './Components/ItemDetail/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";

@@ -64,10 +64,7 @@ export async function getSingleItem(idParams) {
 export async function getItemsByCategory(categoryParams) {
   const collectionRef = collection(DB, "products");
 
-  const queryCat = query(
-    collectionRef,
-    where("category", "==", categoryParams)
-  );
+  const queryCat = query(collectionRef, where("category", "==",categoryParams ))
 
   const documentSnapshot = await getDocs(queryCat);
 
