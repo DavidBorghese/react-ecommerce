@@ -12,6 +12,7 @@ You can clone this proyect using the simple link in you console.
 
 ### `Deployed proyect`
 
+https://algorico.vercel.app/
 
 ### `npm start`
 
